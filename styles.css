@@ -1,0 +1,40 @@
+#container {
+    width: 25%;
+    margin: auto;
+    padding: 1rem 0;
+}
+
+#display {
+    text-align: center;
+    height: 3rem;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+.visible {
+    visibility:
+}
+
+.col-4 {
+    text-align: center;
+}
+
+button {
+    width: 15%;
+    padding: 1rem 0;
+    background: #67B26F;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #4ca2cd, #67B26F);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #4ca2cd, #67B26F);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    outline-style: none;
+    margin: .2rem;
+    border-radius: 25%;
+}
+
+h1 {
+    white-space: pre;
+}
