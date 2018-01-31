@@ -1,33 +1,31 @@
-@font-face {
-    font-family: "Bitstream Vera Serif Bold";
-    src: url("/font/");
-}
-
-
-
 #container {
-    width: 25%;
-    margin: auto;
+    width: 20%;
     padding: 1rem 0;
-    background: #6190E8;
+    background: #F3904F;
     /* fallback for old browsers */
-    background: -webkit-linear-gradient(to top, #A7BFE8, #6190E8);
+    background: -webkit-linear-gradient(to left, #3B4371, #F3904F);
     /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to top, #A7BFE8, #6190E8);
+    background: linear-gradient(to left, #3B4371, #F3904F);
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     border-radius: 5%;
+}
+
+.bckcolor {
+    width: 100%;
 }
 
 
 #display {
     text-align: center;
     height: 3rem;
-    background-color: #c6e2ff;
-    width: 80%;
-    overflow: hidden;
-    margin: 1rem auto;
+    background-color: rgba(0, 0, 0, 0.2);
     padding: .5rem;
-
+    margin: 1rem auto;
+    width: 75%;
+    border-radius: 5%;
+    color: white;
+    font-family: 'Dhurjati', sans-serif;
+    font-size: 2em;
 }
 
 .hidden {
@@ -43,13 +41,16 @@
 }
 
 button {
-    width: 20%;
+    width: 15%;
     padding: 1rem 0;
-    background: white;
+    background-color: rgba(0, 0, 0, 0);
     opacity: .7;
     outline-style: none;
     margin: .2rem;
     border-radius: 25%;
+    font-weight: 700;
+    font-size: 1.2em;
+    color: white;
 }
 
 h1 {

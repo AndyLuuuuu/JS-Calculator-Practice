@@ -1,5 +1,6 @@
 var keyList = document.querySelectorAll("button");
 var displayArr = [];
+var disp;
 var display = document.getElementById("display");
 var trigger = false;
 
@@ -38,7 +39,8 @@ function keyPress(key, number) {
             if (number === "=") {
                 displayArr = display.textContent.split(" ");
                 equal();
-                display.textContent = displayArr.join("");
+                disp = displayArr[0];
+                display.textContent = disp.toFixed(3);
             } else if (number === "+-") {
                 operations.negative();
             } else if (number === "C") {
