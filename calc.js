@@ -42,6 +42,8 @@ function keyPress(key, number) {
                 operations.negative();
             } else if (number === "C") {
                 location.reload();
+            } else if (number === "+-") {
+                operations.negative();
             } else {
                 display.textContent += number;
             }
@@ -49,7 +51,15 @@ function keyPress(key, number) {
     })
 };
 
+// Finished
 function equals() {
+    var num1 = 0;
+    var num2 = 0;
+    var num3;
+    num1 = parseFloat(displayArr[0]);
+    num2 = parseFloat(displayArr[2]);
+    displayArr.splice(0, 1, num1);
+    displayArr.splice(2, 1, num2);
     if (displayArr[1] === "*") {
         operations.multiply(displayArr[0], displayArr[2]);
     } else if (displayArr[1] === "/") {
@@ -66,7 +76,7 @@ function isIntegar(number) {
     if (number % 1 == 0) {
         return this.number;
     } else {
-        return this.number.toFixed(3);
+        return this.number.toFixed(2);
     }
 }
 
@@ -110,10 +120,14 @@ operations = {
     negative: function () {
         var replace = 0;
         displayArr = display.textContent.split(" ");
-        if (displayArr.length = 1) {
+        if (displayArr.length <= 1) {
             replace = displayArr.pop();
             displayArr.push("");
             display.textContent = "-" + replace;
+        } else {
+            replace = (0 - parseFloat(displayArr[2]));
+            displayArr.splice(2, 1, replace);
+            display.textContent = displayArr[0] + " " + displayArr[1] + " " + replace;
         }
     }
 };
