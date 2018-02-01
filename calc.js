@@ -1,8 +1,8 @@
 var keyList = document.querySelectorAll("button");
+var btns = document.querySelectorAll(".none");
 var displayArr = [];
 var disp;
 var display = document.getElementById("display");
-var trigger = false;
 
 // Number Keys
 keyPress(0, 7);
@@ -23,12 +23,15 @@ keyPress(11, " + ");
 keyPress(12, "+-");
 keyPress(14, ".");
 keyPress(15, " - ");
+keyPress(16, "( ");
+keyPress(17, " )");
 keyPress(19, "=");
 
 keyPress(18, "C")
 
 
 // Accepts clicks on buttons and does stuff accordingly.
+// Will deal with numbers within parenthesis first!
 // BUG****** When you double click C when you first start...
 //           It will go from "Calculator" to "C"
 function keyPress(key, number) {
@@ -38,9 +41,28 @@ function keyPress(key, number) {
         } else {
             if (number === "=") {
                 displayArr = display.textContent.split(" ");
-                equal();
-                disp = displayArr[0];
-                display.textContent = disp.toFixed(3);
+                if (displayArr[0] === "(") {
+                    displayArr.shift();
+                    for (var i = 0; i <= displayArr.length; i++) {
+                        if (displayArr[i] === ")") {
+                            var parenArr = displayArr.slice(i++);
+                            parenArr.shift();
+                            displayArr.splice(i)
+                            displayArr.pop();
+                            equal();
+                            displayArr = displayArr.concat(parenArr);
+                            equal();
+                            console.log(displayArr);
+                            console.log(parenArr);
+                            disp = displayArr[0];
+                            display.textContent = disp.toFixed(2);
+                        }
+                    }
+                } else {
+                    equal();
+                    disp = displayArr[0];
+                    display.textContent = disp.toFixed(2);
+                };
             } else if (number === "+-") {
                 operations.negative();
             } else if (number === "C") {
@@ -64,6 +86,9 @@ function equal() {
     var divide = "/";
     var plus = "+";
     var minus = "-";
+    var lBracket = "(";
+    var rBracket = ")";
+
     for (multiply in displayArr) {
         for (var i = 0; i <= displayArr.length; i++) {
             if (displayArr[i] === "*") {
@@ -71,8 +96,6 @@ function equal() {
                 num2 = displayArr[i + 1];
                 replace = operations.multiply(num1, num2)
                 displayArr.splice(i - 1, 3, replace);
-                console.log(replace);
-                console.log(displayArr);
             }
         }
     };
@@ -84,9 +107,6 @@ function equal() {
                 num2 = displayArr[i + 1];
                 replace = operations.divide(num1, num2);
                 displayArr.splice(i - 1, 3, replace);
-
-                console.log(replace);
-                console.log(displayArr);
             }
         }
     };
@@ -98,9 +118,6 @@ function equal() {
                 num2 = isIntegar(displayArr[i + 1]);
                 replace = operations.plus(num1, num2)
                 displayArr.splice(i - 1, 3, replace);
-
-                console.log(replace);
-                console.log(displayArr);
             }
         }
     };
@@ -112,50 +129,10 @@ function equal() {
                 num2 = displayArr[i + 1];
                 replace = operations.minus(num1, num2)
                 displayArr.splice(i - 1, 3, replace);
-
-                console.log(replace);
-                console.log(displayArr);
             };
         }
     }
 };
-
-//function operation(symbol, replace) {
-//    this.symbol = symbol;
-//    var replace = 0;
-//
-//    for (var i = 0; i <= displayArr.length; i++) {
-//        if (displayArr[i] === symbol) {
-//            num1 = displayArr[i - 1];
-//            num2 = displayArr[i + 1];
-//            replace = operations.multiply(num1, num2)
-//            displayArr.splice(i - 1, 3, replace);
-//            console.log(replace);
-//            console.log(displayArr);
-//
-//        }
-//    }
-//};
-//
-//// Finished
-//function equals() {
-//    var num1 = 0;
-//    var num2 = 0;
-//    var num3;
-//    num1 = parseFloat(displayArr[0]);
-//    num2 = parseFloat(displayArr[2]);
-//    displayArr.splice(0, 1, num1);
-//    displayArr.splice(2, 1, num2);
-//    if (displayArr[1] === "*") {
-//        operations.multiply(displayArr[0], displayArr[2]);
-//    } else if (displayArr[1] === "/") {
-//        operations.divide(displayArr[0], displayArr[2]);
-//    } else if (displayArr[1] === "+") {
-//        operations.plus(displayArr[0], displayArr[2]);
-//    } else if (displayArr[1] === "-") {
-//        operations.minus(displayArr[0], displayArr[2]);
-//    }
-//}
 
 // Checks if number is integar, if not returns a float/decimal number
 
@@ -185,8 +162,6 @@ operations = {
         this.num2 = num2;
         result = parseFloat(this.num1 / this.num2);
         return (result);
-
-
     },
 
     plus: function (num1, num2) {
@@ -194,7 +169,7 @@ operations = {
         this.num1 = parseFloat(num1);
         this.num2 = parseFloat(num2);
         result = parseFloat(this.num1 + this.num2);
-        console.log(result);
+        console.log(parseFloat(result));
         return (result);
     },
 

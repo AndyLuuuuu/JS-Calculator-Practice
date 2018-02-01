@@ -1,13 +1,30 @@
+@font-face {
+    font-family: "Digital7";
+    src: url("fonts/digital-7.ttf");
+}
+
+@font-face {
+    font-family: "Oswald";
+    src: url("fonts/Oswald-SemiBold.ttf");
+}
+
 #container {
     width: 20%;
+    margin: 0 auto;
     padding: 1rem 0;
-    background: #F3904F;
+    background: #0f0c29;
     /* fallback for old browsers */
-    background: -webkit-linear-gradient(to left, #3B4371, #F3904F);
+    background: -webkit-linear-gradient(to right, #24243e, #302b63, #0f0c29);
     /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to left, #3B4371, #F3904F);
+    background: linear-gradient(to right, #24243e, #302b63, #0f0c29);
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     border-radius: 5%;
+    border: 2px solid grey;
+    min-width: 380px;
+    min-height: 450px;
+    -webkit-box-shadow: 11px 17px 17px 0px rgba(117, 112, 117, 0.75);
+    -moz-box-shadow: 11px 17px 17px 0px rgba(117, 112, 117, 0.75);
+    box-shadow: 11px 17px 17px 0px rgba(117, 112, 117, 0.75);
 }
 
 .bckcolor {
@@ -24,8 +41,8 @@
     width: 75%;
     border-radius: 5%;
     color: white;
-    font-family: 'Dhurjati', sans-serif;
-    font-size: 2em;
+    font-family: 'Digital7';
+    font-size: 3em;
 }
 
 .hidden {
@@ -46,13 +63,19 @@ button {
     background-color: rgba(0, 0, 0, 0);
     opacity: .7;
     outline-style: none;
-    margin: .2rem;
+    margin: .5rem;
     border-radius: 25%;
-    font-weight: 700;
-    font-size: 1.2em;
+    font-size: 1rem;
     color: white;
+    font-family: 'Oswald';
 }
 
 h1 {
     white-space: pre;
+}
+
+button:hover {
+    transform: scale(1.2);
+    border: 2px solid rgba(15, 247, 201, 1);
+
 }
